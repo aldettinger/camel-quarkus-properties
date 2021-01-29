@@ -1,50 +1,22 @@
 # code-with-quarkus project
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+This project demonstrates some tips when using configuration properties with Camel Quarkus.
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
-
-## Running the application in dev mode
-
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
-```
-
-## Packaging and running the application
+## Running the demo
 
 The application can be packaged using:
 ```shell script
-./mvnw package
-```
-It produces the `code-with-quarkus-1.0.0-SNAPSHOT-runner.jar` file in the `/target` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/lib` directory.
-
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
+./mvnw clean test
 ```
 
-The application is now runnable using `java -jar target/code-with-quarkus-1.0.0-SNAPSHOT-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
+The test should output logs like below:
 ```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
+Basic property read from annotation: a-basic-value
+Basic property read from ConfigProvider: a-basic-value
+Basic property read from camel simple: a-basic-value
+The java.util.Properties file format applies: a-value-with-unicode-character-(√9=3)
+Property expression read from camel simple: a-value-resolved-via-a-property-expression
+Environment variable based property read from camel simple: a-value-with-environment-variable-agallice
+Environment variable based property replaced with default: a-value-where-non-existing-environment-variable-is-replaced-by-a-default-value
+Environment variable based property replaced with default via property expression: a-value-where-non-existing-environment-variable-is-replaced-with-a-default-value-resolved-via-a-property-expression
 ```
-
-You can then execute your native executable with: `./target/code-with-quarkus-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.html.
-
-# RESTEasy JAX-RS
-
-<p>A Hello World RESTEasy resource</p>
-
-Guide: https://quarkus.io/guides/rest-json

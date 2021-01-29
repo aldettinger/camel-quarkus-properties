@@ -14,17 +14,6 @@ public class MyRouteBuilder extends RouteBuilder {
     @ConfigProperty(name = "basic")
     String basicPropertyFromAnnotation;
 
-    // Lately, I was discussing with a community suer
-    // It's really good to have news from the ground, can't imagine what's
-    // happening in the wild, so keep sharing feedback
-
-    // TODO:
-    // show @ConfigProperty
-    // show ConfigProvider.getConfig().getValue()
-    // show simple {{}}
-    // show property expression
-    //
-    // show configuration profile ?
     @Override
     public void configure() {
         String basicPropertyFromConfigProvider = ConfigProvider.getConfig().getValue("basic", String.class);
